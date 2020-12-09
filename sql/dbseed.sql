@@ -21,14 +21,14 @@ CREATE TABLE IF NOT EXISTS comment (
 INSERT INTO news
     (id, title, text, created_at, updated_at)
 VALUES
-    (1, 'First title', 'Text of first news', null, null),
-    (2, 'Second title', 'Text of second news', null, null),
-    (3, 'Third title', 'Text of third news', null, null),
-    (4, 'Fourth title', 'Text of fourth news', null, null),
-    (5, 'Fifth title', 'Text of fifth news', null, null);
+    (1, 'Заголовок 1', 'Текст 1', null, null),
+    (2, 'Заголовок 2', 'Текст 2', null, null),
+    (3, 'Заголовок 3', 'Текст 3', null, null),
+    (4, 'Заголовок 4', 'Текст 4', null, null),
+    (5, 'Заголовок 5', 'Текст 5', null, null);
 INSERT INTO comment
     (id, text, news_id)
 VALUES
-    (1, 'First news comment - 1', 1),
-    (2, 'First news comment - 2', 1),
-    (3, 'Second news comment - 1', 2);
+    (1, 'Первый комментарий к первой новости', 1),
+    (2, 'Второй комментарий к первой новости', 1),
+    (3, 'Первый комментарий ко второй новости', 2);
