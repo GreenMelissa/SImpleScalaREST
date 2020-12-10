@@ -5,8 +5,7 @@ import models.{Comment, CommentItem}
 import play.api.db.Database
 import play.api.libs.json.{Json, OFormat}
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
-import services.{CommentManager, NewsManager}
-
+import services.CommentManager
 import javax.inject.{Inject, Singleton}
 
 /**

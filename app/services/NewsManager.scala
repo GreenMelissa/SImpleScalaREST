@@ -4,7 +4,6 @@ import exceptions.NotFoundException
 import play.api.db.Database
 import models.{News, NewsItem}
 import play.api.libs.json.{Json, OFormat}
-import java.sql.PreparedStatement
 import javax.inject.Inject
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -41,22 +40,6 @@ class NewsManager @Inject() (db: Database) {
   }
 
   /**
-   * Запись новости в БД
-   * @param news Модель новости
-   * @return
-   */
-  def createNews(news: Option[NewsItem]): Unit = {
-    db.withTransaction { conn =>
-      val statement = conn.prepareStatement(
-        "INSERT INTO news (title, text, created_at, updated_at) VALUES (?, ?, null, null);"
-      )
-      this.setStatementParams(statement, news)
-      statement.execute
-      statement.close()
-    }
-  }
-
-  /**
    * Обновление новости в БД
    * @param id ID новости
    * @param news Модель новости
@@ -67,7 +50,8 @@ class NewsManager @Inject() (db: Database) {
       val statement = conn.prepareStatement(
         "UPDATE news SET title = ?, text = ? WHERE id = ?;"
       )
-      this.setStatementParams(statement, news)
+      statement.setString(1, news.get.title)
+      statement.setString(2, news.get.text)
       statement.setInt(3, id)
       statement.execute
       statement.close()
@@ -124,15 +108,5 @@ class NewsManager @Inject() (db: Database) {
         throw new NotFoundException()
       }
     }
-  }
-
-  /**
-   * Подготовка SQL
-   * @param statement SQL выражение
-   * @param news Модель новости
-   */
-  def setStatementParams(statement: PreparedStatement, news: Option[NewsItem]): Unit = {
-    statement.setString(1, news.get.title)
-    statement.setString(2, news.get.text)
   }
 }

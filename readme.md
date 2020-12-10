@@ -7,6 +7,7 @@ REST API для новостного канала
     GET    news Просмотр списка новостей
     GET    news/ID Просмотр новости по ID
     POST   news Создание новости (параметры title, text)
+    POST   news/upload Загрузка новостей из RSS (XML файл передается через multipart/form-data)
     PUT    news/ID Редактирование новости по ID (параметры title, text)
     DELETE news/ID Удаление новости по ID
     GET    comment/newsID Просмотр списка всех комментариев к новости

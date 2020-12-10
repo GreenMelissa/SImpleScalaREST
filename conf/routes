@@ -4,6 +4,7 @@ GET     /news/:id                  controllers.NewsController.view(id: Int)
 POST    /news                      controllers.NewsController.create
 DELETE  /news/:id                  controllers.NewsController.delete(id: Int)
 PUT     /news/:id                  controllers.NewsController.update(id: Int)
+POST    /news/upload               controllers.NewsController.upload
 # Модуль комментариев
 GET     /comment/:newsId           controllers.CommentController.index(newsId: Int)
 POST    /comment/:newsId           controllers.CommentController.create(newsId: Int)
